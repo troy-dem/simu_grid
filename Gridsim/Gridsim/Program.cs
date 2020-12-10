@@ -6,7 +6,7 @@ namespace Gridsim
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Worvb,cxbv!");
+            Console.WriteLine("new Push!");
         }
     }
 }
