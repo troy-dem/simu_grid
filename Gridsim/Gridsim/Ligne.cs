@@ -6,13 +6,13 @@ namespace Gridsim
 {
     class Ligne
     {
-        private float _Pnow;
-        public float Pnow { get; }
+        public float Pnow { get; private set; }
         public readonly float Pmax;
         private Noeud Noeud_in;
         private Noeud Noeud_out;
-        private readonly Centrale Centrale_in;
-        private readonly bool CentraleLine;
+        private Centrale Centrale_in;
+        private Consommateur consommateur;
+        private readonly string type;
 
         public Ligne(Noeud Noeud_in,Noeud Noeud_out,int Pmax)
         {
@@ -23,30 +23,66 @@ namespace Gridsim
             this.Noeud_out.AddLineIn(this);
         }
 
+        //constructeur d'une LigneCentrale
         public Ligne(Centrale Centrale_in, Noeud Noeud_out, int Pmax)
         {
-            this.CentraleLine = true;
+            this.type = "LigneCentrale";
             this.Pmax = Pmax;
-            Pnow = Centrale_in.Power;
+            this.Centrale_in = Centrale_in;
+            this.Pnow = Centrale_in.Power;
             this.Noeud_out = Noeud_out;
+            this.Noeud_out.AddLineIn(this);
+        }
+
+        //constructeur d'une LigneConsommateur
+        public Ligne(Noeud Noeud_in, Consommateur consommateur, int Pmax)
+        {
+            this.type = "LigneConsommateur";
+            this.Pmax = Pmax;
+            this.consommateur = consommateur;
+            if(consommateur.Consumption <= Pmax)
+            {
+                this.Pnow = consommateur.Consumption;
+            }
+            else
+            {
+                this.Pnow = Pmax;
+            }
+            this.Noeud_in = Noeud_in;
+            this.Noeud_in.AddLineOut(this);
         }
 
         public bool SetPower(float Pchange)
         {
             if (Pnow + Pchange <= Pmax)
             {
-                if (CentraleLine)
-                {
-                    Centrale_in.SetPower(Pchange);
+                this.Pnow += Pchange;
+                //Console.WriteLine("PnowL: "+Pnow);
+                switch (this.type) {
+                    case "LigneCentrale":
+                        //Console.WriteLine("Ligne Centrale");
+                        if (Centrale_in.SetPower(Pchange))
+                        {
+                            return true;
+                        }
+                        break;
+                    case "LigneConsommateur":
+                        //Console.WriteLine("Ligne Conso");
+                        this.Pnow = consommateur.Consumption;
+                        if (Noeud_in.UpdateNoeud())
+                        {
+                            return true;
+                        }
+                        break;
+                    default:
+                        //Console.WriteLine("delault case");
+                        if (Noeud_in.UpdateNoeud())
+                        {
+                            return true;
+                        }
+                        break;
                 }
-                else
-                {
-                    if (Noeud_in.UpdateNoeud())
-                    {
-                        this._Pnow += Pchange;
-                        return true;
-                    }
-                } 
+                this.Pnow -= Pchange;
             }
             return false;
         }

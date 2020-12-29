@@ -6,21 +6,21 @@ namespace Gridsim
 {
     class Consommateur
     {
-        private int consumption;
+        public float Consumption { get; private set; }
         public Consommateur(int consumption)
         {
-            this.consumption = consumption;
+            this.Consumption = consumption;
         }
 
         public double UpdateConso()
         {
             Random aleatoire = new Random();
             int change = aleatoire.Next(-40, 40);
-            if (this.consumption + change > 0)
+            if (this.Consumption + change > 0)
             {
-                this.consumption += change;
+                this.Consumption += change;
             }
-            return this.consumption;
+            return this.Consumption;
         }
     }
 }

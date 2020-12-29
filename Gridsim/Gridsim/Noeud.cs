@@ -19,12 +19,14 @@ namespace Gridsim
         }
         public bool UpdateNoeud()
         {
+            Pout = 0;
+            Pin = 0;
             //calcul de la consigne de puissance
             foreach (Ligne Ligne_out in Lignes_out)
             {
                 Pout += Ligne_out.Pnow;
             }
-            foreach(Ligne Ligne_in in Lignes_in)
+            foreach (Ligne Ligne_in in Lignes_in)
             {
                 Pin += Ligne_in.Pnow;
             }
@@ -40,6 +42,7 @@ namespace Gridsim
                 {
                     Pgot = Ligne_in.Pmax - Ligne_in.Pnow;
                     Pdif -= Pgot;
+                    Pgot = 0;
                 }
             }
             return false;
