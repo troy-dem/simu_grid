@@ -57,7 +57,7 @@ namespace Gridsim
             if (Pnow + Pchange <= Pmax)
             {
                 this.Pnow += Pchange;
-                //Console.WriteLine("PnowL: "+Pnow);
+                //Console.WriteLine("Pnow: "+Pnow);
                 switch (this.type) {
                     case "LigneCentrale":
                         //Console.WriteLine("Ligne Centrale");

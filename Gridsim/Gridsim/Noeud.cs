@@ -31,6 +31,11 @@ namespace Gridsim
                 Pin += Ligne_in.Pnow;
             }
             Pdif = Pout - Pin;
+            /*
+            Console.WriteLine("Pout " + Pout);
+            Console.WriteLine("Pin " + Pin);
+            Console.WriteLine("Pdif "+Pdif);
+            */
             //essai de régulation
             foreach (Ligne Ligne_in in Lignes_in)
             {
@@ -41,8 +46,8 @@ namespace Gridsim
                 if (Ligne_in.SetPower(Ligne_in.Pmax - Ligne_in.Pnow))
                 {
                     Pgot = Ligne_in.Pmax - Ligne_in.Pnow;
+                    //Console.WriteLine("Pgot "+Pgot);
                     Pdif -= Pgot;
-                    Pgot = 0;
                 }
             }
             return false;
