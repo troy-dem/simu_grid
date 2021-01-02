@@ -18,11 +18,11 @@ namespace Gridsim
             center1.AddCentrale(Centrale3);
 
             //création consommateurs
-            Consommateur consom1 = new Consommateur(300);
-            Consommateur consom2 = new Consommateur(146);
+            Consommateur consom1 = new Consommateur(70);
+            Consommateur consom2 = new Consommateur(36);
             Consommateur consom3 = new Consommateur(40);
-            Consommateur consom4 = new Consommateur(645);
-            Consommateur consom5 = new Consommateur(250);
+            Consommateur consom4 = new Consommateur(45);
+            Consommateur consom5 = new Consommateur(20);
             //ajout
             center1.AddConso(consom1);
             center1.AddConso(consom2);
@@ -74,8 +74,18 @@ namespace Gridsim
             center1.AddLigne(Ligne04);
             center1.AddLigne(Ligne05);
 
-
-            center1.Display();   
+            while (true)
+            {
+                if (Console.ReadLine() == "y")
+                {
+                    center1.UpdateAll();
+                }
+                else
+                {
+                    System.Environment.Exit(1);
+                }
+            }
+            
         }
     }        
 }

@@ -7,7 +7,7 @@ namespace Gridsim
     class ControlCenter
     {
         List<Centrale> Centralesl;
-        List<Consommateur> Conommateursl;
+        List<Consommateur> Consommateursl;
         List<Noeud> Noeudsl;
         List<Ligne> Lignesl;
         public ControlCenter()
@@ -16,7 +16,7 @@ namespace Gridsim
             Centralesl = new List<Centrale>();
 
             //création consommateurs
-            Conommateursl = new List<Consommateur>();
+            Consommateursl = new List<Consommateur>();
 
             //création de noeuds
             Noeudsl = new List<Noeud>();
@@ -30,7 +30,7 @@ namespace Gridsim
         }
         public void AddConso(Consommateur co)
         {
-            Conommateursl.Add(co);
+            Consommateursl.Add(co);
         }
         public void AddNoeud(Noeud n)
         {
@@ -42,22 +42,22 @@ namespace Gridsim
         }
         public void UpdateAll()
         {
-            int upcnt;
-            for (upcnt = 0; upcnt < 1; upcnt++)
+            foreach (Consommateur consoi in Consommateursl)
             {
-                int logcnt = 1;
+                consoi.UpdateConso();
+            }
+            int upcnt;
+            for (upcnt = 0; upcnt < 4; upcnt++)
+            {
                 foreach (Noeud noeudi in Noeudsl)
                 {
                     noeudi.UpdateNoeud();
-                    Console.WriteLine("noeud " + (logcnt));
-                    Console.WriteLine("");
-                    logcnt++;
                 }
             }
+            Display();
         }
         public void Display()
         {
-            UpdateAll();
             // centrales
             Console.WriteLine("info centrales:");
             int logcnt = 1;
@@ -71,7 +71,7 @@ namespace Gridsim
             // centrales
             Console.WriteLine("info consommateurs:");
             logcnt = 1;
-            foreach (Consommateur consoi in Conommateursl)
+            foreach (Consommateur consoi in Consommateursl)
             {
                 Console.WriteLine("Consom " + logcnt + ": " + consoi.Consumption);
                 logcnt++;
