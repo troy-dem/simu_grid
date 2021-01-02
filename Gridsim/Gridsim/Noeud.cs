@@ -39,14 +39,19 @@ namespace Gridsim
             //essai de régulation
             foreach (Ligne Ligne_in in Lignes_in)
             {
-                if (Ligne_in.SetPower(Pdif))
+                if(Ligne_in.SetPower(Pdif))
                 {
                     return true;
                 }
                 if (Ligne_in.SetPower(Ligne_in.Pmax - Ligne_in.Pnow))
                 {
                     Pgot = Ligne_in.Pmax - Ligne_in.Pnow;
-                    //Console.WriteLine("Pgot "+Pgot);
+                    /*
+                    Console.WriteLine("Pmax " + Ligne_in.Pmax);
+                    Console.WriteLine("Pnow " + Ligne_in.Pnow);
+                    Console.WriteLine("Pgot "+Pgot);
+                    Console.WriteLine(Ligne_in.type);
+                    */
                     Pdif -= Pgot;
                 }
             }

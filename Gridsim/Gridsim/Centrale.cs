@@ -16,12 +16,17 @@ namespace Gridsim
         {
             //implémenter vérification de la consigne de puissance et régulation de la centrale en fonction
             Power += Pchange;
-            if (Power < 0 || Power>800)
+            if (Power < 0 || Power > 800)
             {
                 Power -= Pchange;
                 return false;
             }
             return true;
+        }
+
+        public void getPower()
+        {
+            int b = 0;
         }
     }
 }

@@ -42,15 +42,33 @@ namespace Gridsim
         }
         public void UpdateAll()
         {
-            foreach (Consommateur consoi in Consommateursl)
+            foreach (Centrale centralei in Centralesl)
+            {
+                centralei.getPower();
+            }
+                foreach (Consommateur consoi in Consommateursl)
             {
                 consoi.UpdateConso();
+                foreach(Ligne lignei in Lignesl)
+                {
+                    if ( lignei.type== "LigneConsommateur")
+                    {
+                        if (lignei.consommateur.Equals(consoi))
+                        {
+                            lignei.UpdatePnow(consoi.Consumption);
+                        }
+                        
+                    }
+                }
             }
             int upcnt;
-            for (upcnt = 0; upcnt < 4; upcnt++)
+            for (upcnt = 0; upcnt < 1; upcnt++)
             {
+                int logcnt = 1;
                 foreach (Noeud noeudi in Noeudsl)
                 {
+                    Console.WriteLine(logcnt);
+                    logcnt++;
                     noeudi.UpdateNoeud();
                 }
             }

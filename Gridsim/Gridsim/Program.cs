@@ -18,10 +18,10 @@ namespace Gridsim
             center1.AddCentrale(Centrale3);
 
             //création consommateurs
-            Consommateur consom1 = new Consommateur(70);
-            Consommateur consom2 = new Consommateur(36);
-            Consommateur consom3 = new Consommateur(40);
-            Consommateur consom4 = new Consommateur(45);
+            Consommateur consom1 = new Consommateur(670);
+            Consommateur consom2 = new Consommateur(136);
+            Consommateur consom3 = new Consommateur(240);
+            Consommateur consom4 = new Consommateur(145);
             Consommateur consom5 = new Consommateur(20);
             //ajout
             center1.AddConso(consom1);

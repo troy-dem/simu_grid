@@ -11,8 +11,8 @@ namespace Gridsim
         private Noeud Noeud_in;
         private Noeud Noeud_out;
         private Centrale Centrale_in;
-        private Consommateur consommateur;
-        private readonly string type;
+        public readonly Consommateur consommateur;
+        public readonly string type;
 
         public Ligne(Noeud Noeud_in,Noeud Noeud_out,int Pmax)
         {
@@ -40,18 +40,23 @@ namespace Gridsim
             this.type = "LigneConsommateur";
             this.Pmax = Pmax;
             this.consommateur = consommateur;
-            if(consommateur.Consumption <= Pmax)
+            UpdatePnow(consommateur.Consumption);
+            this.Noeud_in = Noeud_in;
+            this.Noeud_in.AddLineOut(this);
+        }
+
+        public void UpdatePnow(float conso)
+        {
+            if (conso <= Pmax)
             {
-                this.Pnow = consommateur.Consumption;
+                this.Pnow = conso;
             }
             else
             {
                 this.Pnow = Pmax;
             }
-            this.Noeud_in = Noeud_in;
-            this.Noeud_in.AddLineOut(this);
         }
-
+        
         public bool SetPower(float Pchange)
         {
             if (Pnow + Pchange <= Pmax)
