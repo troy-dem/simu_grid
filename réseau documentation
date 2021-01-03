@@ -8,3 +8,11 @@ Le second paramètre est la sortie de la ligne et peut-être soit un consommateu
 
 Un noeud se comporte comme noeud de distribution si il est passé en tant que premier paramètre de plusieurs lignes.
 Si il est passé en tant que second paramètre de plusieurs lignes alors il se comporte comme un noeud de distribution.
+
+Chaque noeud contient les références vers les objets lignes auxquels il est connecté et ces références sont stockées dans deux listes en fonction de la direction du flux électrique les traversant. 
+Si le flux sort du noeud alors la ligne est stockée dans Lignes_out sinon dans Lignes_in. Ce stockage est appelé par le constructeur de la lignes sur les noeuds dont elle a les références.
+
+Le réseau à la capacité de s'autoréguler en vérifiant que la différence entre des flux sortants et entrants de chaque noeud soit nulle. Cette différence peut-être résorbée en envoyant des consignes de régulation de puissance jusqu'aux centrales.
+Les lignes et les centrales se protègent automatiquement contre la surproduction et la surchage en adaptant les consignes de régulation de puissance lorsque c'est nécessaire.
+
+La mise à jour de l'état du réseau est réalisée par l'appel de la méthode UpdateAll() du centre de controle.
