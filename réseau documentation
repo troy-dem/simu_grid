@@ -16,3 +16,11 @@ Le réseau à la capacité de s'autoréguler en vérifiant que la différence en
 Les lignes et les centrales se protègent automatiquement contre la surproduction et la surchage en adaptant les consignes de régulation de puissance lorsque c'est nécessaire.
 
 La mise à jour de l'état du réseau est réalisée par l'appel de la méthode UpdateAll() du centre de controle.
+Premièrement, on met à jour la consommation de chaque consommateur avec une méthode de la classe consommateur et on change la valeur de la puissance à transmettre sur leurs lignes pour que le réseau puisse en tenir compte dans sa régulation.
+Deuxièmement, on appelle la méthode UpdateNoeud() sur chacun des noeuds pour réguler le réseau automatiquement. les appels de cette méthode sont lié à la variable upcnt qui définit combien de fois nous permettons au réseau de s'autoréguler à chaque mise à jour de son état.
+L'augmentation de la valeur de cette variable peut augmenter l'efficacité de la régulation mais aussi le temps de calcul nécessaire. Cette variable n'a pas un impact significatif sur la durée d'exécution dans notre exemple car nous avons peu d'élements dans notre réseau.
+Troixièmement, nous appeleons la méthode Display() qui imprime un ensemble de données intéressantes pour vérifier l'état du réseau.
+
+Pour pouvoir utiliser correctement le centre de controle, il faut avoir créer l'ensembles des éléments faisant partie du réseau puis les avoir ajoutés au centre de controle avec les méthodes appropriées à chaque élément de réseau.
+Un exemple d'initialisation correcte d'un centre de controle est présenté dans le fichier "program.cs" à l'exception de la boucle "while(true)". Cette boucle se charge d'exécuter la simulation et de la mêttre à jour lorsque l'utilisateur écrit "y" dans la console. 
+L'utilisateur peut écrire n'importe quoi d'autre dans la console pour quiter le programme.
