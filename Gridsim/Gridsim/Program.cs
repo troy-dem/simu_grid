@@ -54,7 +54,7 @@ namespace Gridsim
             //lignes normales
             Ligne Ligne12 = new Ligne(Noeud1, Noeud2, 1000);
             Ligne Ligne23 = new Ligne(Noeud2, Noeud3, 1000);
-            //Ligne Ligne42 = new Ligne(Noeud4, Noeud2, 1000);
+            Ligne Ligne42 = new Ligne(Noeud4, Noeud2, 1000);
             Ligne Ligne54 = new Ligne(Noeud5, Noeud4, 1000);
             //lignes consommateurs
             Ligne Ligne01 = new Ligne(Noeud1, consom1, 600);
@@ -68,7 +68,7 @@ namespace Gridsim
             center1.AddLigne(Ligne3);
             center1.AddLigne(Ligne12);
             center1.AddLigne(Ligne23);
-            //center1.AddLigne(Ligne42);
+            center1.AddLigne(Ligne42);
             center1.AddLigne(Ligne54);
             center1.AddLigne(Ligne01);
             center1.AddLigne(Ligne02);

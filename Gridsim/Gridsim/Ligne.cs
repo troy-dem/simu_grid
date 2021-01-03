@@ -68,14 +68,12 @@ namespace Gridsim
                 Console.WriteLine("Pend " + Pnow);
                 switch (this.type) {
                     case "LigneCentrale":
-                        //Console.WriteLine("Ligne Centrale");
                         if (Centrale_in.SetPower(Pchange))
                         {
                             return true;
                         }
                         break;
                     case "LigneConsommateur":
-                        //Console.WriteLine("Ligne Conso");
                         this.Pnow = consommateur.Consumption;
                         if (Noeud_in.UpdateNoeud())
                         {
@@ -83,12 +81,10 @@ namespace Gridsim
                         }
                         break;
                     default:
-                        //Console.WriteLine("delault case");
                         if (Noeud_in.UpdateNoeud())
                         {
                             return true;
                         }
-                        //this.Pnow += Pchange;
                         break;
                 }
                 this.Pnow -= Pchange;
