@@ -1,2 +1,3 @@
 # simu_grid
-projet programmation OOP bac3 Ecam pour le 18/12 18h
+La documentation est disponibles dans les différents fichiers textes contenant "documantation" dans le nom de fichier
+Le diagramme  de classe est disponible au format SVG
