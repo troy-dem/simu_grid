@@ -1,0 +1,10 @@
+Pour pouvoir créer le réseau éléctrique sous forme de graphe il y a 2 classes permettant de connecter les différents éléments.
+La classe Noeud permêt de créer à la fois les noeuds de concentration et de distribution car son constructeur n' a aucun paramètre.
+Le comportement du Noeud dépendra des lignes auxquelles il aura été lié.
+
+Les Lignes peuvent êtres de différents types en fonction des paramètres passés au constructeur et donc de leur fonction. 
+Le premier paramètre est l'entrée de la ligne et peut-être soit une centrale électrique soit un autre Noeud.
+Le second paramètre est la sortie de la ligne et peut-être soit un consommateur soit un autre Noeud.
+
+Un noeud se comporte comme noeud de distribution si il est passé en tant que premier paramètre de plusieurs lignes.
+Si il est passé en tant que second paramètre de plusieurs lignes alors il se comporte comme un noeud de distribution.
