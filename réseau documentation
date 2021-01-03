@@ -5,6 +5,7 @@ Le comportement du Noeud dépendra des lignes auxquelles il aura été lié.
 Les Lignes peuvent êtres de différents types en fonction des paramètres passés au constructeur et donc de leur fonction. 
 Le premier paramètre est l'entrée de la ligne et peut-être soit une centrale électrique soit un autre Noeud.
 Le second paramètre est la sortie de la ligne et peut-être soit un consommateur soit un autre Noeud.
+Le troixième paramètre est la puissance maximale qui peut être transmise par la ligne.
 
 Un noeud se comporte comme noeud de distribution si il est passé en tant que premier paramètre de plusieurs lignes.
 Si il est passé en tant que second paramètre de plusieurs lignes alors il se comporte comme un noeud de distribution.
