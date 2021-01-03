@@ -9,6 +9,8 @@ namespace Gridsim
         {
             ControlCenter center1 = new ControlCenter();
             Meteo meteo1 = new Meteo();
+            Marche marche1 = new Marche();
+            center1.AddMarche(marche1);
             //création de centrales
             Centrale Centrale1 = new Centrale(0);
             Centrale Centrale2 = new Centrale(0,meteo1);

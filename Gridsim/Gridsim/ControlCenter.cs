@@ -10,6 +10,7 @@ namespace Gridsim
         List<Consommateur> Consommateursl;
         List<Noeud> Noeudsl;
         List<Ligne> Lignesl;
+        private Marche marche;
         public ControlCenter()
         {
             //création de centrales
@@ -39,6 +40,10 @@ namespace Gridsim
         public void AddLigne(Ligne l)
         {
             Lignesl.Add(l);
+        }
+        public void AddMarche(Marche marche)
+        {
+            this.marche = marche;
         }
         public void UpdateAll()
         {
@@ -72,15 +77,9 @@ namespace Gridsim
         }
         public void Display()
         {
-            // centrales
-            Console.WriteLine("info centrales:");
-            foreach (Centrale centralei in Centralesl)
-            {
-                Console.WriteLine(centralei.info());
-            }
-            Console.WriteLine("");
+            
 
-            // centrales
+            // consommateur
             Console.WriteLine("info consommateurs:");
             int logcnt = 1;
             float consotot = 0;
@@ -91,6 +90,18 @@ namespace Gridsim
                 logcnt++;
             }
             Console.WriteLine("Conso totale: " + consotot);
+            Console.WriteLine("");
+
+            // centrales
+            Console.WriteLine("info centrales:");
+            float costprodtot = 0;
+            foreach (Centrale centralei in Centralesl)
+            {
+                Console.WriteLine(centralei.info());
+                costprodtot += centralei.curCost;
+            }
+            float revenu = ((consotot * marche.elecSell) - costprodtot);
+            Console.WriteLine("Revenu total: " + revenu);
             Console.WriteLine("");
 
             //info lignes générales
