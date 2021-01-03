@@ -1,0 +1,2 @@
+La classe consommateur créé des objet de type consommateur avec dans le constructeur comme paramètre la consommation du consommateur.
+Ensuite une methode Update qui sert à mettre à jour un consommateur avec une nouvelle valeur de consommation.
