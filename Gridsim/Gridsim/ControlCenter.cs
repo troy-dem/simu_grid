@@ -42,10 +42,6 @@ namespace Gridsim
         }
         public void UpdateAll()
         {
-            foreach (Centrale centralei in Centralesl)
-            {
-                centralei.getPower();
-            }
                 foreach (Consommateur consoi in Consommateursl)
             {
                 consoi.UpdateConso();
@@ -67,7 +63,7 @@ namespace Gridsim
                 int logcnt = 1;
                 foreach (Noeud noeudi in Noeudsl)
                 {
-                    Console.WriteLine(logcnt);
+                    //Console.WriteLine(logcnt);
                     logcnt++;
                     noeudi.UpdateNoeud();
                 }
@@ -82,6 +78,7 @@ namespace Gridsim
             foreach (Centrale centralei in Centralesl)
             {
                 Console.WriteLine("ProdCentrale "+logcnt+": "+ centralei.Power);
+                Console.WriteLine(centralei.info());
                 logcnt++;
             }
             Console.WriteLine("");

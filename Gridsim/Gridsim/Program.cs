@@ -8,21 +8,23 @@ namespace Gridsim
         static void Main(string[] args)
         {
             ControlCenter center1 = new ControlCenter();
+            Meteo meteo1 = new Meteo();
             //création de centrales
             Centrale Centrale1 = new Centrale(0);
-            Centrale Centrale2 = new Centrale(0);
+            Centrale Centrale2 = new Centrale(0,meteo1);
             Centrale Centrale3 = new Centrale(0);
+            
             //ajout
             center1.AddCentrale(Centrale1);
             center1.AddCentrale(Centrale2);
             center1.AddCentrale(Centrale3);
 
             //création consommateurs
-            Consommateur consom1 = new Consommateur(670);
-            Consommateur consom2 = new Consommateur(136);
-            Consommateur consom3 = new Consommateur(240);
-            Consommateur consom4 = new Consommateur(145);
-            Consommateur consom5 = new Consommateur(20);
+            Consommateur consom1 = new Consommateur(370);
+            Consommateur consom2 = new Consommateur(236);
+            Consommateur consom3 = new Consommateur(340);
+            Consommateur consom4 = new Consommateur(165);
+            Consommateur consom5 = new Consommateur(400);
             //ajout
             center1.AddConso(consom1);
             center1.AddConso(consom2);
@@ -52,7 +54,7 @@ namespace Gridsim
             //lignes normales
             Ligne Ligne12 = new Ligne(Noeud1, Noeud2, 1000);
             Ligne Ligne23 = new Ligne(Noeud2, Noeud3, 1000);
-            Ligne Ligne42 = new Ligne(Noeud4, Noeud2, 1000);
+            //Ligne Ligne42 = new Ligne(Noeud4, Noeud2, 1000);
             Ligne Ligne54 = new Ligne(Noeud5, Noeud4, 1000);
             //lignes consommateurs
             Ligne Ligne01 = new Ligne(Noeud1, consom1, 600);
@@ -66,7 +68,7 @@ namespace Gridsim
             center1.AddLigne(Ligne3);
             center1.AddLigne(Ligne12);
             center1.AddLigne(Ligne23);
-            center1.AddLigne(Ligne42);
+            //center1.AddLigne(Ligne42);
             center1.AddLigne(Ligne54);
             center1.AddLigne(Ligne01);
             center1.AddLigne(Ligne02);

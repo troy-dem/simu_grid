@@ -17,6 +17,7 @@ namespace Gridsim
         public Ligne(Noeud Noeud_in,Noeud Noeud_out,int Pmax)
         {
             this.Pmax = Pmax;
+            this.Pnow = 0;
             this.Noeud_in = Noeud_in;
             this.Noeud_out = Noeud_out;
             this.Noeud_in.AddLineOut(this);
@@ -59,10 +60,12 @@ namespace Gridsim
         
         public bool SetPower(float Pchange)
         {
-            if (Pnow + Pchange <= Pmax)
+            Console.WriteLine("Pnow " + Pnow);
+            if (Pnow + Pchange <= Pmax & Pnow + Pchange >= 0)
             {
                 this.Pnow += Pchange;
-                //Console.WriteLine("Pnow: "+Pnow);
+                Console.WriteLine("Type " + type);
+                Console.WriteLine("Pend " + Pnow);
                 switch (this.type) {
                     case "LigneCentrale":
                         //Console.WriteLine("Ligne Centrale");
@@ -85,6 +88,7 @@ namespace Gridsim
                         {
                             return true;
                         }
+                        //this.Pnow += Pchange;
                         break;
                 }
                 this.Pnow -= Pchange;
