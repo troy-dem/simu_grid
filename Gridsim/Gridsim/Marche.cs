@@ -20,7 +20,7 @@ namespace Gridsim
 		public Marche()
 		{
 			this.elecBuy = RandomNumber(10, 25);
-			this.elecSell = RandomNumber(7, 21);
+			this.elecSell = RandomNumber(20, 40);
 			this.CO2Cost = RandomNumber(8, 15);
 		}
 	}

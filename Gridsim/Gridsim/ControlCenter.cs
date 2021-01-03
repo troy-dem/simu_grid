@@ -98,7 +98,7 @@ namespace Gridsim
             foreach (Centrale centralei in Centralesl)
             {
                 Console.WriteLine(centralei.info());
-                costprodtot += centralei.curCost;
+                costprodtot += (centralei.curCost+(centralei.curCO2*marche.CO2Cost));
             }
             float revenu = ((consotot * marche.elecSell) - costprodtot);
             Console.WriteLine("Revenu total: " + revenu);

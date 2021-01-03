@@ -16,14 +16,7 @@ namespace Gridsim
         public float curCO2;
         private Meteo meteo;
         public readonly string type;
-        string[] meteolist = { "vent", "soleil", "pluie", "orage", "neige" };
-        private readonly Random _random = new Random();
 
-
-        public int RandomNumber(int min, int max)
-        {
-            return _random.Next(min, max);
-        }
         //constructeur centrale gaz
         public Centrale(float initpower)
         {
@@ -37,6 +30,7 @@ namespace Gridsim
         public Centrale(float initpower, Meteo meteo)
         {
             this.meteo = meteo;
+            this.CO2 = 0;
             this.type = "Centrale éolienne";
             this.Cost = Convert.ToSingle(4.6);
             float mult = 1;
