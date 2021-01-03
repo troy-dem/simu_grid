@@ -1,0 +1,9 @@
+Afin de pouvoir gérer les demandes des Consomateurs, les centrales doivent répondre a plusieur critères et travailler avec différentes classes afn de pouvvoir fonctionner.
+La classe Centrale permet de créé un objet centrale qui peut être une centrale à gaz ou éolienne.
+Pour une centrale à gaz on doit initialiser une valeur initiale de puissance que la centrale disctibue, ensuite dans le constructeur, la centrale stocke des données de cout ainsi que de CO2.
+La centrale éolienne, à sa création, récupère un objet de type Meteo pour mettre à jour sa production de puissance.
+La centrale a la possibilité de gérer des surcharges et parviens à distribuer la demande de puissance sur plusieurs centrales.
+
+La classe Meteo génère une méteo aléatoire uni par la suite influencera le niveau de puissance des centrales éoliennes.
+
+La classe Marche c'est le marché et sert à créé des valeurs de prix de l'électricité que ce soit pour l'achat ou la vente ainsi que le prix du GAZ.
