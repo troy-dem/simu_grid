@@ -60,12 +60,9 @@ namespace Gridsim
         
         public bool SetPower(float Pchange)
         {
-            Console.WriteLine("Pnow " + Pnow);
             if (Pnow + Pchange <= Pmax & Pnow + Pchange >= 0)
             {
                 this.Pnow += Pchange;
-                Console.WriteLine("Type " + type);
-                Console.WriteLine("Pend " + Pnow);
                 switch (this.type) {
                     case "LigneCentrale":
                         if (Centrale_in.SetPower(Pchange))

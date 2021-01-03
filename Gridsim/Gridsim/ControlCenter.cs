@@ -74,23 +74,23 @@ namespace Gridsim
         {
             // centrales
             Console.WriteLine("info centrales:");
-            int logcnt = 1;
             foreach (Centrale centralei in Centralesl)
             {
-                Console.WriteLine("ProdCentrale "+logcnt+": "+ centralei.Power);
                 Console.WriteLine(centralei.info());
-                logcnt++;
             }
             Console.WriteLine("");
 
             // centrales
             Console.WriteLine("info consommateurs:");
-            logcnt = 1;
+            int logcnt = 1;
+            float consotot = 0;
             foreach (Consommateur consoi in Consommateursl)
             {
                 Console.WriteLine("Consom " + logcnt + ": " + consoi.Consumption);
+                consotot += consoi.Consumption;
                 logcnt++;
             }
+            Console.WriteLine("Conso totale: " + consotot);
             Console.WriteLine("");
 
             //info lignes générales
